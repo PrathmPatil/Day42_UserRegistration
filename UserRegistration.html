@@ -96,26 +96,10 @@
         }
         
         .input-group {
-            height: 100px;
+            height: 150px;
         }
     </style>
 </head>
-<script>
-    function validate() {
-        var regName = /^[A-Z]{1}[a-zA-z]{2,}$/;
-        var login = document.getElementById('name').value;
-        if (!regName.test(login)) {
-            alert('Please enter your full name (First name starts with Cap and has minimum 3 characters).');
-            console.log("'Please enter your full name (First name starts with Cap and has minimum 3 characters).'");
-            document.getElementById('login').focus();
-
-        } else {
-            alert('Valid name given.');
-            console.log("Valid name given");
-
-        }
-    }
-</script>
 
 <body>
     <div class="container">
@@ -126,6 +110,12 @@
                     <div class="input-field">
                         <i class="fa-solid fa-user"></i>
                         <input type="text" id="name" placeholder="Name">
+                        <error-output class="text-error" for="text"></error-output>
+                    </div>
+                    <div class="input-field">
+                        <i class="fa-sharp fa-regular fa-envelope"></i>
+                        <input type="email" id="Email" placeholder="E.g. abc.xyz@bl.co.in">
+                        <error-output class="text-error" for="text"></error-output>
                     </div>
                 </div>
                 <div class="btn-field">
@@ -134,6 +124,28 @@
             </form>
         </div>
     </div>
+    <script>
+        const name = document.querySelector('#name');
+        const textError = document.querySelector('.text-error');
+
+        function validate() {
+            var regName = /^[A-Z]{1}[a-zA-z]{2,}$/;
+            var login = document.getElementById('name').value;
+            var regGmail = /^abc+.+[a-zA-z]+@+bl.co.+[a-zA-z]$/;
+            var logingmail = document.getElementById('Email').value;
+            if (regName.test(login) && regGmail.test(logingmail)) {
+                alert('valid data');
+            } else if (login == "" || logingmail == "") {
+                alert('Please enter empty value')
+            } else if (!regName.test(login)) {
+                alert('Please enter valid name')
+                document.getElementById('login').focus();
+            } else if (!regGmail.test(logingmail)) {
+                alert('Please enter valid mail')
+                document.getElementById('logingmail').focus();
+            }
+        }
+    </script>
 </body>
 
 </html>
