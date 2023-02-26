@@ -96,7 +96,7 @@
         }
         
         .input-group {
-            height: 200px;
+            height: 275px;
         }
     </style>
 </head>
@@ -123,6 +123,12 @@
                         <input type="phone" id="Phone" placeholder="E.g. 91 9999999999">
                         <error-output class="text-error" for="text"></error-output>
                     </div>
+
+                    <div class="input-field">
+                        <i class="fa-solid fa-mobile"></i>
+                        <input type="password" id="Password" placeholder="Password">
+                        <error-output class="text-error" for="text"></error-output>
+                    </div>
                 </div>
                 <div class="btn-field">
                     <button type="button" onclick="validate();">Submit</button>
@@ -141,9 +147,11 @@
             var logingmail = document.getElementById('Email').value;
             var regPhone = /^(0|91)?(\s)?[6-9]{1}[0-9]{9}$/;
             var loginphone = document.getElementById('Phone').value;
-            if (regName.test(login) && regGmail.test(logingmail) && regPhone.test(loginphone)) {
+            var regPassword = /^([0-9a-zA-z]{8,})$/;
+            var loginPassword = document.getElementById('Password').value;
+            if (regName.test(login) && regGmail.test(logingmail) && regPhone.test(loginphone) && regPassword.test(loginPassword)) {
                 alert('valid data');
-            } else if (login == "" || logingmail == "" || loginphone == "") {
+            } else if (login == "" || logingmail == "" || loginphone == "" || loginPassword == " ") {
                 alert('Please enter empty value')
             } else if (!regName.test(login)) {
                 alert('Please enter valid name')
@@ -154,6 +162,9 @@
             } else if (!regPhone.test(loginphone)) {
                 alert('Please enter valid phone')
                 document.getElementById('loginphone').focus();
+            } else if (!regPassword.test(loginPassword)) {
+                alert('Please enter valid Password');
+                document.getElementById('Password').focus();
             }
         }
     </script>
