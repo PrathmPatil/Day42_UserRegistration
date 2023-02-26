@@ -96,7 +96,7 @@
         }
         
         .input-group {
-            height: 150px;
+            height: 200px;
         }
     </style>
 </head>
@@ -117,6 +117,12 @@
                         <input type="email" id="Email" placeholder="E.g. abc.xyz@bl.co.in">
                         <error-output class="text-error" for="text"></error-output>
                     </div>
+
+                    <div class="input-field">
+                        <i class="fa-solid fa-mobile"></i>
+                        <input type="phone" id="Phone" placeholder="E.g. 91 9999999999">
+                        <error-output class="text-error" for="text"></error-output>
+                    </div>
                 </div>
                 <div class="btn-field">
                     <button type="button" onclick="validate();">Submit</button>
@@ -133,9 +139,11 @@
             var login = document.getElementById('name').value;
             var regGmail = /^abc+.+[a-zA-z]+@+bl.co.+[a-zA-z]$/;
             var logingmail = document.getElementById('Email').value;
-            if (regName.test(login) && regGmail.test(logingmail)) {
+            var regPhone = /^(0|91)?(\s)?[6-9]{1}[0-9]{9}$/;
+            var loginphone = document.getElementById('Phone').value;
+            if (regName.test(login) && regGmail.test(logingmail) && regPhone.test(loginphone)) {
                 alert('valid data');
-            } else if (login == "" || logingmail == "") {
+            } else if (login == "" || logingmail == "" || loginphone == "") {
                 alert('Please enter empty value')
             } else if (!regName.test(login)) {
                 alert('Please enter valid name')
@@ -143,6 +151,9 @@
             } else if (!regGmail.test(logingmail)) {
                 alert('Please enter valid mail')
                 document.getElementById('logingmail').focus();
+            } else if (!regPhone.test(loginphone)) {
+                alert('Please enter valid phone')
+                document.getElementById('loginphone').focus();
             }
         }
     </script>
