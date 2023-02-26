@@ -147,7 +147,7 @@
             var logingmail = document.getElementById('Email').value;
             var regPhone = /^(0|91)?(\s)?[6-9]{1}[0-9]{9}$/;
             var loginphone = document.getElementById('Phone').value;
-            var regPassword = /^([0-9a-zA-z]{8,})$/;
+            var regPassword = /^(?=.*[@#$%^&+=])(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
             var loginPassword = document.getElementById('Password').value;
             if (regName.test(login) && regGmail.test(logingmail) && regPhone.test(loginphone) && regPassword.test(loginPassword)) {
                 alert('valid data');
